@@ -1,12 +1,13 @@
 {
-  "name": "express-sequelize-api-boilerplate",
+  "name": "potShot-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "test:cover": "jest --coverage",
-    "start": "nodemon server.js"
+    "start": "npm run-script pretest && nodemon server.js",
+    "pretest": "eslint --ignore-path .gitignore ."
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +15,6 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "@babel/runtime": "^7.4.5",
-    "aws-sdk": "^2.528.0",
     "axios": "^0.18.0",
     "babel-loader": "^8.0.0-beta.0",
     "body-parser": "^1.19.0",
@@ -23,28 +23,32 @@
     "crypto": "^1.0.1",
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
-    "express-acl": "^2.0.8",
     "express-joi-validator": "^2.0.1",
     "express-validation": "^1.0.2",
-    "http": "0.0.0",
-    "jest": "^24.8.0",
+    "jest": "^25.1.0",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "mock-express-response": "^0.2.2",
-    "multer": "^1.4.2",
     "mysql2": "^1.6.5",
-    "nodemon": "^1.19.0",
-    "os": "^0.1.1",
-    "sequelize": "^5.8.5",
-    "sequelize-cli": "^5.4.0"
+    "nodemon": "^2.0.2",
+    "plaid": "^4.8.0",
+    "sequelize": "^5.15.1",
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.4.4",
-    "babel-jest": "^24.8.0",
+    "babel-jest": "^25.1.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.17.3"
+    "eslint-plugin-import": "^2.17.3",
+    "husky": "^4.2.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run-script pretest",
+      "pre-push": "npm run-script pretest"
+    }
   }
 }
