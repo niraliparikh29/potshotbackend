@@ -11,9 +11,9 @@ const router = express.Router();
 //= ===============================
 router.get('/me', userController.profile);
 router.post(
-  '/changePassword',
-  validate(userValidator.changePassword),
-  userController.changePassword,
+	'/changePassword',
+	validate(userValidator.changePassword),
+	userController.changePassword,
 );
 
 module.exports = router;
